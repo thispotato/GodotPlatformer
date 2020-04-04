@@ -10,6 +10,7 @@ var direction   = 1
 func kill():
 	$CollisionShape2D.disabled = true
 	queue_free()
+	
 func _physics_process(delta):
 	velocity.x = SPEED * direction
 	$AnimatedSprite.play("run")
