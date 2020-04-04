@@ -47,7 +47,8 @@ func _physics_process(delta):
 	if get_slide_count() > 1:
 		for i in range(get_slide_count()):
 			if "Enemy" in get_slide_collision(i).collider.name:
-				queue_free()		
+				queue_free()
+						
 	velocity.y += GRAVITY
 	move_and_slide(velocity , FLOOR)
 	

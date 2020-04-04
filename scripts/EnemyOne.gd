@@ -7,7 +7,9 @@ const FLOOR     = Vector2(0,-1)
 var velocity    = Vector2()
 var direction   = 1
 
-# warning-ignore:unused_argument
+func kill():
+	$CollisionShape2D.disabled = true
+	queue_free()
 func _physics_process(delta):
 	velocity.x = SPEED * direction
 	$AnimatedSprite.play("run")
