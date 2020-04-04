@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://assets/characters.png" type="Texture" id=1]
+[ext_resource path="res://scripts/EnemyOne.gd" type="Script" id=2]
 
 [sub_resource type="AtlasTexture" id=1]
 flags = 4
@@ -34,12 +35,13 @@ animations = [ {
 extents = Vector2( 11.25, 15.3195 )
 
 [node name="EnemyOne" type="KinematicBody2D"]
+script = ExtResource( 2 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 scale = Vector2( 1.5, 1.5 )
 frames = SubResource( 5 )
 animation = "run"
-frame = 1
+frame = 3
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
