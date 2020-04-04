@@ -72,3 +72,15 @@ playing = true
 visible = false
 position = Vector2( 0.5, 7 )
 shape = SubResource( 11 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+zoom = Vector2( 0.8, 0.8 )
+limit_left = 0
+limit_top = 0
+limit_right = 1000
+limit_bottom = 300
+limit_smoothed = true
+smoothing_enabled = true
+smoothing_speed = 3.0
+editor_draw_limits = true
