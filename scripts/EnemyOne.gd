@@ -3,14 +3,16 @@ extends KinematicBody2D
 const SPEED     = 100
 const GRAVITY   = 10
 const FLOOR     = Vector2(0,-1)
+const EXPLOSION = preload("res://scenes/Explosion.tscn")
 
 var velocity    = Vector2()
 var direction   = 1
 
 func kill():
+	var explosion = EXPLOSION.instance()
+	add_child(explosion)
 	$CollisionShape2D.disabled = true
-	queue_free()
-	
+	$Timer.start()
 func _physics_process(delta):
 	velocity.x = SPEED * direction
 	$AnimatedSprite.play("run")
@@ -33,3 +35,9 @@ func _physics_process(delta):
 		for i in range(get_slide_count()):
 			if "Player" in get_slide_collision(i).collider.name:
 				queue_free()
+			
+
+
+func _on_Timer_timeout():
+	queue_free()
+	
