@@ -74,7 +74,7 @@ extents = Vector2( 11.25, 16.75 )
 scale = Vector2( 1.5, 1.5 )
 frames = SubResource( 10 )
 animation = "run"
-frame = 2
+frame = 3
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
