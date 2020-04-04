@@ -22,7 +22,7 @@ func _physics_process(delta):
 		$King.flip_h = true
 		if sign($Position2D.position.x) == 1:
 			$Position2D.position.x *= -1
-			
+
 	else:
 		if is_on_floor():
 			velocity.x = 0
@@ -43,7 +43,14 @@ func _physics_process(delta):
 			
 		get_parent().add_child(bullet)
 		bullet.position = $Position2D.global_position
-		
-		
+	
+	if get_slide_count() > 1:
+		for i in range(get_slide_count()):
+			if "Enemy" in get_slide_collision(i).collider.name:
+				queue_free()		
 	velocity.y += GRAVITY
 	move_and_slide(velocity , FLOOR)
+	
+		
+	
+	
