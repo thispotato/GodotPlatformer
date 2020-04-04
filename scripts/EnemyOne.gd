@@ -13,6 +13,7 @@ func kill():
 	add_child(explosion)
 	$CollisionShape2D.disabled = true
 	$Timer.start()
+	
 func _physics_process(delta):
 	velocity.x = SPEED * direction
 	$AnimatedSprite.play("run")
