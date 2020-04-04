@@ -22,8 +22,7 @@ func _physics_process(delta):
 		$King.flip_h = true
 		if sign($Position2D.position.x) == 1:
 			$Position2D.position.x *= -1
-			print("moved position2D")
-		
+			
 	else:
 		if is_on_floor():
 			velocity.x = 0
