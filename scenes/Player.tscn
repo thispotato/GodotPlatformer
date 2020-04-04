@@ -85,3 +85,4 @@ smoothing_speed = 3.0
 editor_draw_limits = true
 
 [node name="Position2D" type="Position2D" parent="."]
+position = Vector2( 22.75, 8.75 )
