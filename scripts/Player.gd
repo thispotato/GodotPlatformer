@@ -1,6 +1,7 @@
 extends KinematicBody2D
 
 const SPEED		= 100
+const BOOST     = 150
 const GRAVITY	= 10
 const JUMP 		= -350
 const FLOOR     = Vector2(0,-1)
@@ -11,15 +12,23 @@ var velocity 	= Vector2()
 
 func _physics_process(delta):
 	if Input.is_action_pressed("ui_right"):
+		if Input.is_action_pressed("ui_down"):
+			velocity.x = BOOST
+		else:
+			velocity.x = SPEED
+			
 		$King.play("run")
-		velocity.x = SPEED
 		$King.flip_h = false
 		if sign($Position2D.position.x) == -1:
 			$Position2D.position.x *= -1
 	
 	elif Input.is_action_pressed("ui_left"):
+		if Input.is_action_pressed("ui_down"):
+			velocity.x = -BOOST
+		else:
+			velocity.x = -SPEED
+			
 		$King.play("run")
-		velocity.x = -SPEED
 		$King.flip_h = true
 		if sign($Position2D.position.x) == 1:
 			$Position2D.position.x *= -1
@@ -56,11 +65,6 @@ func _physics_process(delta):
 						
 	velocity.y += GRAVITY
 	move_and_slide(velocity , FLOOR)
-	
-		
-	
-	
-
 
 func _on_Ghost_Timer_timeout():
 	if Input.is_action_pressed("ui_down"):
