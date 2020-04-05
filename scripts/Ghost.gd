@@ -24,5 +24,5 @@ func _ready():
 #	pass
 
 
-func _on_Tween_tween_completed(object, key):
+func _on_Tween_tween_completed(object, _key):
 	queue_free()

@@ -7,12 +7,18 @@ const EXPLOSION = preload("res://scenes/Explosion.tscn")
 
 var velocity    = Vector2()
 var direction   = 1
+export(Vector2) var size = Vector2(1,1)
+
+func _ready():
+	scale = size
+	
 
 func kill():
 	var explosion = EXPLOSION.instance()
 	add_child(explosion)
 	$CollisionShape2D.disabled = true
 	$Timer.start()
+	get_parent().get_node("ScreenShake").camera_shake(1,10,100)
 	
 func _physics_process(delta):
 	velocity.x = SPEED * direction
