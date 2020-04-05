@@ -8,6 +8,7 @@ const EXPLOSION = preload("res://scenes/Explosion.tscn")
 var velocity    = Vector2()
 var direction   = 1
 export(Vector2) var size = Vector2(1,1)
+export(bool) var is_boss = false
 
 func _ready():
 	scale = size
@@ -18,7 +19,8 @@ func kill():
 	add_child(explosion)
 	$CollisionShape2D.disabled = true
 	$Timer.start()
-	get_node("Shaker").camera_shake(1,10,100)
+	if is_boss == true:
+		get_node("Shaker").camera_shake(1,10)
 
 	
 func _physics_process(delta):
