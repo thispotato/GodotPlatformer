@@ -44,10 +44,6 @@ func _physics_process(delta):
 		get_parent().add_child(bullet)
 		bullet.position = $Position2D.global_position
 	
-	if get_slide_count() > 1:
-		for i in range(get_slide_count()):
-			if "Enemy" in get_slide_collision(i).collider.name:
-				queue_free()
 						
 	velocity.y += GRAVITY
 	move_and_slide(velocity , FLOOR)

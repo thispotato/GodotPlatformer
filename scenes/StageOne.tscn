@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://floor.tres" type="TileSet" id=1]
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://grass.tres" type="TileSet" id=3]
 [ext_resource path="res://scenes/EnemyOne.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/baxk.png" type="Texture" id=5]
 
 [node name="StageOne" type="Node2D"]
 __meta__ = {
@@ -28,3 +29,16 @@ tile_data = PoolIntArray( 655407, 536870916, 0, 655409, 536870914, 0, 852000, 2,
 
 [node name="EnemyOne" parent="." instance=ExtResource( 4 )]
 position = Vector2( 125.294, 199.086 )
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+scroll_base_scale = Vector2( 0.3, 0.3 )
+scroll_ignore_camera_zoom = true
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2( 513, 0 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2( -13, -17 )
+scale = Vector2( 1.02339, 1.09211 )
+texture = ExtResource( 5 )
+centered = false
