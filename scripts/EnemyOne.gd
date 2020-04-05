@@ -18,7 +18,8 @@ func kill():
 	add_child(explosion)
 	$CollisionShape2D.disabled = true
 	$Timer.start()
-	get_parent().get_node("ScreenShake").camera_shake(1,10,100)
+	get_node("Shaker").camera_shake(1,10,100)
+
 	
 func _physics_process(delta):
 	velocity.x = SPEED * direction
