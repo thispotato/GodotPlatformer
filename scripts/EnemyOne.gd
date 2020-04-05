@@ -31,11 +31,12 @@ func _physics_process(delta):
 		$RayCast2D.position.x *= -1
 	if is_on_wall():
 		direction *= -1
-		
+	
+	#destory the player if they collide with the enemy	
 	if get_slide_count() > 1:
 		for i in range(get_slide_count()):
 			if "Player" in get_slide_collision(i).collider.name:
-				queue_free()
+				get_slide_collision(i).collider.kill() #call the kill function from the player
 			
 
 

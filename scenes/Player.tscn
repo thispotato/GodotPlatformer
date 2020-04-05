@@ -89,4 +89,7 @@ position = Vector2( 33.5, 8.75 )
 [node name="Ghost_Timer" type="Timer" parent="."]
 wait_time = 0.1
 autostart = true
+
+[node name="Kill_Timer" type="Timer" parent="."]
 [connection signal="timeout" from="Ghost_Timer" to="." method="_on_Ghost_Timer_timeout"]
+[connection signal="timeout" from="Kill_Timer" to="." method="_on_Kill_Timer_timeout"]

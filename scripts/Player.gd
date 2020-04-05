@@ -10,6 +10,11 @@ const GHOST     = preload("res://scenes/Ghost.tscn")
 
 var velocity 	= Vector2()
 
+
+func kill():
+	$CollisionShape2D.disabled = true
+	$Kill_Timer.start()
+	
 func _physics_process(delta):
 	if Input.is_action_pressed("ui_right"):
 		if Input.is_action_pressed("ui_down"):
@@ -60,7 +65,10 @@ func _physics_process(delta):
 	#make its position the player's current position
 	#Get the Player's animation current frame 
 	#Set its flip property to the Players to ensure it works
-	
+	if get_slide_count() > 1:
+		for i in range(get_slide_count()):
+			if "Enemy" in get_slide_collision(i).collider.name:
+				kill()
 	
 						
 	velocity.y += GRAVITY
@@ -73,3 +81,7 @@ func _on_Ghost_Timer_timeout():
 		ghost.position = position
 		ghost.texture =$King.frames.get_frame($King.animation , $King.frame) #set the ghost texture to the current frame of the current animation
 		ghost.flip_h = $King.flip_h
+
+
+func _on_Kill_Timer_timeout():
+	queue_free()
